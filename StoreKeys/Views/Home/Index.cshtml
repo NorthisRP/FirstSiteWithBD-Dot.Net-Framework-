@@ -1,0 +1,46 @@
+﻿@{
+	Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Магазин ключей SteamBuy</title>
+	<link rel="stylesheet" href="~/Content/style.css">
+	<link rel="stylesheet" href="~/Content/default.css">
+</head>
+<body>
+	<header>
+        <a href="#"><img src="~/Content/Images/steampay.png" alt=""></a>
+        <h2>@Html.ActionLink("Магазин ключей от игр", "Index", "Home")</h2>
+        <h2>@Html.ActionLink("Вход/Регистрация", "Login", "Home")</h2>
+	</header>
+    <div class="list">
+        @{
+            foreach (var key in ViewBag.Keys)
+            {
+                <div class="item">
+                    <img src=@key.Img alt="">
+                    <div class="container">
+                        <div class="title">
+                            <h2>@key.Name</h2>
+                            <p>@key.Tag</p>
+                        </div>
+                        <div class="price">
+                            <h2>Цена: <h2 class="cost">@key.Price</h2> <h2>p</h2></h2>
+                            @Html.ActionLink("Купить", "AddToCart", "Home", new { id = key.Id}, htmlAttributes: new { @style = "color:white"})
+                        </div>
+                    </div>
+                </div>
+
+                
+            }
+        }
+    </div>
+	<footer>
+	</footer>
+</body>
+<!-- <script src="scriptcontent.js"></script> -->
+</html>

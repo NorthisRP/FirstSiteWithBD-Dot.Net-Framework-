@@ -1,0 +1,66 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Личный кабинет</title>
+    <link rel="stylesheet" href="~/Content/menu.css">
+    <link rel="stylesheet" href="~/Content/default.css">
+    @*<link rel="stylesheet" href="css/font-awesome.css">*@
+</head>
+<body>
+    <header>
+        <a href="#"><img src="~/Content/Images/steampay.png" alt=""></a>
+        <h2>@Html.ActionLink("Магазин ключей от игр", "Index", "Home")</h2>
+        <h2>@Html.ActionLink("Выйти", "Quit", "Home")</h2>
+    </header>
+    @{
+        <h2>Ваши данные:</h2>
+        <h3>Имя:@ViewBag.User.Name</h3>
+        <h3>Фамилия:@ViewBag.User.Surname</h3>
+        <h3>Email:@ViewBag.User.Email</h3>
+        <h3>Id:@ViewBag.User.Id</h3>
+    }
+
+    <h1>Ваша корзина:</h1>
+    <div class="list">
+        @{
+
+            int totalPrice = 0;
+            foreach (var item in ViewBag.Cart)
+            {
+                <div class="item">
+                    <img src=@item.Img alt="">
+                    <div class="container">
+                        <div class="title">
+                            <h2>@item.Name</h2>
+                            <p>@item.Tag</p>
+                        </div>
+                        <div class="price">
+                            <h2>Цена: <h2 class="cost">@item.Price</h2> <h2>p</h2></h2>
+                        </div>
+                    </div>
+                </div>
+                totalPrice += @item.Price;
+            }
+        }
+    </div>
+
+    <footer>
+        <div class="button">
+            <h4>Оплатить</h4>
+        </div>
+        <div>
+            <div class="total">
+                <h4>Итого: <h4 id="total">@totalPrice</h4>  <h4>₽</h4></h4>
+            </div>
+
+        </div>
+    </footer>
+</body>
+
+</html>

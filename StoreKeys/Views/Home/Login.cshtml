@@ -1,0 +1,42 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link type="text/css" rel="stylesheet" href="~/Content/login.css" />
+    <link rel="stylesheet" href="~/Content/default.css">
+    <title>Log in</title>
+</head>
+<header>
+    <a href="#"><img src="~/Content/Images/steampay.png" alt=""></a>
+    <h2>@Html.ActionLink("Магазин ключей от игр", "Index", "Home")</h2>
+    <h2>@Html.ActionLink("Вход/Регистрация", "Login", "Home")</h2>
+</header>
+<body>
+    <form method="post">
+        <div class="container">
+            <div class="row">
+                <h2 style="text-align:center"></h2>
+                <input type="text" name="email" placeholder="Email" required>
+                <input type="password" name="password" placeholder="Пароль" required>
+                <input type="submit" value="Войти">
+            </div>
+        </div>
+    </form>
+
+    <div class="bottom-container">
+        <div class="row">
+            <div class="col">
+                @Html.ActionLink(linkText: "Регистрация", actionName: "Registration", routeValues: "Home", htmlAttributes: new { @class = "btn", @style = "color:white" })
+            </div>
+            <div class="col">
+                <a href="#" style="color:white" class="btn">Забыли пароль?</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
